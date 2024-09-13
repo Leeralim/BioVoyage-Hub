@@ -1,0 +1,41 @@
+{% extends 'base_bio.html' %}
+
+{% block content %}
+{{ super() }}
+
+<div class="content-body">
+    <div class="container-fluid">
+        <h4 class="card-title">Комплексная обработка ихтиологической информации (SvodBi).</h4>
+        <div class="row">
+
+            {% if parent_list %}
+            {% for k, v in parent_list.items() %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{k}}</h4>
+                        {% for t in v %}
+                        <div class="table-responsive">
+                            {{t|safe}}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            Нет информации(
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

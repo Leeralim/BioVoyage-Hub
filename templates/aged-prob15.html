@@ -1,0 +1,107 @@
+{% extends 'base_bio.html' %}
+
+{% block content %}
+{{ super() }}
+
+
+
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="{{url_for('open_report', alias=alias, curr_form=curr_form)}}" id="" class="" method="post">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+
+                                <div class="col-md-12 col-lg-12">
+                                    <h3 class="card-title">Форма 15. Возрастные пробы: численность по размерам и стадиям зрелости.</h3>
+                                    <p class="text-muted">Введите параметры</p>
+                                    <div class="col-12">
+                                        <br>
+                                        <hr>
+                                    </div>
+
+                                    <div class="tab-content">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Неполовозрелые и половозрелые объекты лова</h4>
+                                                        <p class="text-muted m-b-15 f-s-12">Неполовозрелые</p>
+                                                        <div class="basic-form">
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend"><span class="input-group-text">Границы стадии зрел.</span></div>
+                                                                <input type="text" size=4 maxlength=4 name="start_npzrel" class="form-control" placeholder="нач.">
+                                                                <input type="text" size=4 maxlength=4 name="end_npzrel" class="form-control" placeholder="кон.">
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <p class="text-muted m-b-15 f-s-12">Половозрелые</p>
+                                                        <div class="basic-form">
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend"><span class="input-group-text">Границы стадии зрел.</span>
+                                                                </div>
+                                                                <input type="text" size=4 maxlength=4 name="start_zrel" class="form-control" placeholder="нач.">
+                                                                <input type="text" size=4 maxlength=4 name="end_zrel" class="form-control" placeholder="кон.">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Начало ряда</h4>
+                                                        <p class="text-muted m-b-15 f-s-12">Введите начало ряда (в мм.)</p>
+                                                        <div class="basic-form">
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend"><span class="input-group-text">Начало ряда =</span></div>
+                                                                <input type="text" name="start_row" class="form-control" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Шаг</h4>
+                                                        <p class="text-muted m-b-15 f-s-12">Введите шаг (в мм.)</p>
+                                                        <div class="basic-form">
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend"><span class="input-group-text">Шаг =</span></div>
+                                                                <input type="text" name="counting_step" class="form-control" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 h-100 d-flex flex-column justify-content-center align-items-left">
+                                                <p> <input class="button-74" type="submit" value="Отправить" /> </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock content %}

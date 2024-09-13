@@ -1,0 +1,38 @@
+{% extends 'base_bio.html' %}
+
+{% block content %}
+{{ super() }}
+
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="d-inline">Главная страница</h4>
+                <p></p>
+
+                <div class="row">
+                    <div class="col-md-4 col-lg-2">
+                        <div class="card">
+                            <div class="card-header bg-white">
+                                <h5 class="card-title">Справка о наличии информации в базе</h5>
+                                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                            </div>
+                            <img class="img-fluid" src="" alt="">
+
+                            <div class="card-footer">
+                                <a href="{{url_for('info')}}" class="card-link float-right">
+                                    <button type="button" class="btn mb-1 btn-primary btn-primary">Перейти</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+

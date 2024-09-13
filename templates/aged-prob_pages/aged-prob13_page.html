@@ -1,0 +1,39 @@
+{% extends 'base_bio.html' %}
+
+{% block content %}
+{{ super() }}
+
+<div class="content-body">
+    <div class="container-fluid">
+        <h4 class="card-title">Возрастные пробы: интенсивность питания и частота встречаемости пищевых организмов.</h4>
+        <div class="row">
+
+            {% if datas %}
+            {% for i in datas %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Таблица №{{loop.index}}</h4>
+                        <div class="table-responsive">
+                            {{i|safe}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            Нет информации(
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

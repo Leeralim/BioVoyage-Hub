@@ -1,0 +1,25 @@
+{% extends 'base_bio.html' %}
+
+{% block content %}
+{{ super() }}
+
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Информация в базе</h4>
+                        <div class="table-responsive">
+                            {{df|safe}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

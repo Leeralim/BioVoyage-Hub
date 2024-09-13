@@ -1,0 +1,113 @@
+{% extends 'base_bio.html' %}
+
+{% block content %}
+{{ super() }}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="{{url_for('open_report', alias=alias, curr_form=curr_form)}}" id="" class="" method="post">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+
+                                <div class="col-md-12 col-lg-12">
+                                    <h3 class="card-title">СПРАВКИ ПО ЗАПРОСУ: КАРТОЧКИ МАССОВОГО ПРОМЕРА.</h3>
+                                    <p class="text-muted">Перейти к форме</p>
+                                    <div class="col-12">
+                                        <br>
+                                        <hr>
+                                    </div>
+
+                                    <div class="tab-content">
+                                        <div class="row">
+
+                                            <div class="col-lg-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Вариант расчета</h4>
+                                                        <div class="basic-form">
+                                                            <div class="form-group">
+                                                                <div class="form-check form-check-inline">
+                                                                    <label class="form-check-label">
+                                                                        <input type="checkbox" class="form-check-input" name="by_fish" value="by_fish">По объекту лова
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+        
+                                            <div class="col-lg-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Тип длины размерных рядов</h4>
+                                                        <p class="text-muted m-b-15 f-s-12"></p>
+                                                        <div class="basic-form">
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend"><span class="input-group-text">Тип =</span></div>
+                                                                <input type="text" name="type_len" class="form-control" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-8">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Разделение по полу</h4>
+                                                        <p class="text-muted m-b-15 f-s-12">Выберите один или несколько вариантов</p>
+                                                        <div class="basic-form">
+                                                            <div class="form-group">
+                                                                <div class="form-check form-check-inline">
+                                                                    <label class="form-check-label">
+                                                                        <input type="checkbox" class="form-check-input" name="by_M" value="M"> Самцы (М)
+                                                                    </label>
+                                                                    <label class="form-check-label">
+                                                                        <input type="checkbox" class="form-check-input" name="by_F" value="F"> Самки (F)
+                                                                    </label>
+                                                                    <label class="form-check-label">
+                                                                        <input type="checkbox" class="form-check-input" name="by_J" value="J"> Ювенис (J)
+                                                                    </label>
+                                                                    <label class="form-check-label">
+                                                                        <input type="checkbox" class="form-check-input" name="by_I" value="I"> Без разд. (I)
+                                                                    </label>
+                                                                    <label class="form-check-label">
+                                                                        <input type="checkbox" class="form-check-input" name="by_all_pol" value="by_all_pol"> Все (M, F, J, I)
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="tab-content">
+                                        <div class="row">
+                                            <div class="col-12 h-100 d-flex flex-column justify-content-center align-items-left">
+                                                <p> <input class="button-74" type="submit" value="Перейти" /> </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,146 @@
+{% extends 'base_bio.html' %}
+
+{% block content %}
+{{ super() }}
+
+<div class="content-body">
+    <div class="container-fluid">
+        <h4 class="card-title">Возрастные пробы: численность, средний вес и жирность по возрасту, размеру и полу.</h4>
+        <div class="row">
+
+            {% if datas %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Таблица №1</h4>
+                        <div class="table-responsive">
+                            {{datas.0|safe}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Таблица №1</h4>
+                        <div class="table-responsive">
+                            Нет информации
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if datas %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Таблица №2. Распределение численности</h4>
+                        <div class="table-responsive">
+                            {{datas.1|safe}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Таблица №2. Распределение численности</h4>
+                        <div class="table-responsive">
+                            Нет информации
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if datas %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Таблица №3. Распределение веса</h4>
+                        <div class="table-responsive">
+                            {{datas.2|safe}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Таблица №3. Распределение веса</h4>
+                        <div class="table-responsive">
+                            Нет информации
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if datas %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Таблица №4. Распределение жирности</h4>
+                        <div class="table-responsive">
+                            {{datas.3|safe}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Таблица №4. Распределение жирности</h4>
+                        <div class="table-responsive">
+                            Нет информации
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if datas %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Итоги. Распределение численности</h4>
+                        <div class="table-responsive">
+                            {{datas.4|safe}}
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Итоги. Распределение веса</h4>
+                        <div class="table-responsive">
+                            {{datas.5|safe}}
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Итоги. Распределение жирности</h4>
+                        <div class="table-responsive">
+                            {{datas.6|safe}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Итоги.</h4>
+                        <div class="table-responsive">
+                            Нет информации
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends 'base_bio.html' %}
+
+{% block content %}
+{{ super() }}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="{{url_for('open_report', alias=alias, curr_form=curr_form)}}" id="" class="" method="post">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+
+                                <div class="col-md-12 col-lg-12">
+                                    <h3 class="card-title">СПРАВКА ПО ЗАПРОСУ: КАРТОЧКИ ТРАЛОВОГО ЛОВА<hr>
+                                        Ограничения в периоде май-октябрь, только для судов "НАНСЕН" (UANA) и "СМОЛЕНСК" (UFJJ). <br>
+                                        Только для рыбок:сельдь атл.-11310502, скумбрия обык.-14421404, путассу-11881601.</h3>
+                                    <p class="text-muted">Перейти к форме</p>
+                                    <div class="col-12">
+                                        <br>
+                                        <hr>
+                                    </div>
+
+                                    <div class="tab-content">
+                                        <div class="row">
+                                            <div class="col-12 h-100 d-flex flex-column justify-content-center align-items-left">
+                                                <p> <input class="button-74" type="submit" value="Перейти" /> </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,783 @@
+{% extends form_html %}
+
+{% block content %}
+{{ super() }}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="{{url_for('getTables', alias=alias, form=report)}}" id="" class="" method="post">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Введите параметры</h4>
+                            <div class="row align-items-center">
+                                <div class="col-md-12 col-lg-12">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs mb-3" role="tablist">
+                                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tral_card">Траловая карточка</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ulov_card">Карточка вылова</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#biopap_card">Карточка биологич. анализа</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#dop_params">Доп.параметры формы</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#end_form">Отправить данные</a></li>
+                                    </ul>
+
+                                    <!-- Content of tabs -->
+                                    <div class="col-md-12 col-lg-12">
+                                        <div class="tab-content">
+                                            <!-- Траловая карточка -->
+                                            <div class="tab-pane fade show active" id="tral_card" role="tabpanel">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title">Позывной</h4>
+                                                                <p class="text-muted m-b-15 f-s-12">Введите позывной:</p>
+                                                                <div class="basic-form">
+                                                                    <div class="form-group">
+                                                                        <input type="text" name="ship" class="form-control" placeholder="" required>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title">Номер рейса</h4>
+                                                                <p class="text-muted m-b-15 f-s-12">Введите номер рейса:</p>
+                                                                <div class="basic-form">
+                                                                    <div class="form-group">
+                                                                        <input type="text" name="reis" class="form-control" placeholder="" required>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title">Номер трала</h4>
+                                                                <p class="text-muted m-b-15 f-s-12">Введите номер трала:</p>
+                                                                <div class="basic-form">
+                                                                    <div class="input-group" id="trl-once">
+                                                                        <div class="input-group-prepend"><span class="input-group-text">№ =</span></div>
+                                                                        <input type="text" name="trl" class="form-control" placeholder="">
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <p class="text-muted m-b-15 f-s-12">Диапазон тралов:</p>
+                                                                <div class="basic-form">
+                                                                    <div class="input-daterange input-group" id="trl-range">
+                                                                        <div class="input-group-prepend"><span class="input-group-text">Границы знач.</span></div>
+                                                                        <input type="text" name="start_trl" class="form-control" placeholder="нач.">
+                                                                        <input type="text" name="end_trl" class="form-control" placeholder="кон.">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Дата</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Конкретная дата рейса:</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-group" id="date-once">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Дата рейса =</span></div>
+                                                                            <input type="text" name="date" class="form-control" placeholder="ГГГГ-ММ-ДД">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <p class="text-muted m-b-15 f-s-12">Период рейса:</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-daterange input-group" id="date-range">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Начало рейса</span></div>
+                                                                            <input type="text" name="start_date" class="form-control" placeholder="ГГГГ-ММ-ДД">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Конец рейса</span></div>
+                                                                            <input type="text" name="end_date" class="form-control" placeholder="ГГГГ-ММ-ДД">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Широта</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Конкретная широта:</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-group" id="shir-once">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Широта =</span></div>
+                                                                            <input type="text" name="shir" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <p class="text-muted m-b-15 f-s-12">Диапазон широт:</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-daterange input-group">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Границы широты</span></div>
+                                                                            <input type="text" name="start_shir" class="form-control" placeholder="нач.">
+                                                                            <input type="text" name="end_shir" class="form-control" placeholder="кон.">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Долгота</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Конкретная долгота:</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-group" id="dolg-once">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Долгота =</span></div>
+                                                                            <input type="text" name="dolg" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <p class="text-muted m-b-15 f-s-12">Начало и конец долготы</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-daterange input-group">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Границы долготы:</span>
+                                                                            </div>
+                                                                            <input type="text" name="start_dolg" class="form-control" placeholder="нач.">
+                                                                            <input type="text" name="end_dolg" class="form-control" placeholder="кон.">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Диапазон глубин</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Конкретная глубина (в метрах):</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-group" id="glub-once">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Глубина =</span></div>
+                                                                            <input type="text" name="glub" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <p class="text-muted m-b-15 f-s-12">Диапазон глубин (в метрах):</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-daterange input-group">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Границы глубин</span>
+                                                                            </div>
+                                                                            <input type="text" name="start_glub" class="form-control" placeholder="нач.">
+                                                                            <input type="text" name="end_glub" class="form-control" placeholder="кон.">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Диапазон горизонтов траления</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Конкретный горизонт траления (в метрах):</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-group" id="gor-once">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Горизонт =</span></div>
+                                                                            <input type="text" name="gor" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <p class="text-muted m-b-15 f-s-12">Диапазон горизонтов траления (в метрах):</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-daterange input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">Границы горизонтов</span>
+                                                                            </div>
+                                                                            <input type="text" name="start_gor_tral" class="form-control" placeholder="нач.">
+                                                                            <input type="text" name="end_gor_tral" class="form-control" placeholder="кон.">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Куток</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Диапазон кутка:</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-daterange input-group">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Границы кутка</span>
+                                                                            </div>
+                                                                            <input type="text" name="start_kutok" class="form-control" placeholder="нач.">
+                                                                            <input type="text" name="end_kutok" class="form-control" placeholder="кон.">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Рубашка</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Диапазон рубашки:</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-daterange input-group">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Границы рубашки</span>
+                                                                            </div>
+                                                                            <input type="text" name="start_rub" class="form-control" placeholder="нач.">
+                                                                            <input type="text" name="end_rub" class="form-control" placeholder="кон.">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Селективная решетка</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Диапазон селективной решетки:</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-daterange input-group">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Границы селект. реш.</span>
+                                                                            </div>
+                                                                            <input type="text" name="start_sel_resh" class="form-control" placeholder="нач.">
+                                                                            <input type="text" name="end_sel_resh" class="form-control" placeholder="кон.">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Трал</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Выберите один или несколько вариантов:</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="form-group">
+                                                                            <div class="form-check form-check-inline">
+                                                                                <label class="form-check-label">
+                                                                                    <input type="checkbox" class="form-check-input" name="filming" value="filming">Съемочный</label>
+                                                                            </div>
+                                                                            <div class="form-check form-check-inline">
+                                                                                <label class="form-check-label">
+                                                                                    <input type="checkbox" class="form-check-input" name="monitoring" value="monitoring">Мониторинговый</label>
+                                                                            </div>
+                                                                            <div class="form-check form-check-inline">
+                                                                                <label class="form-check-label">
+                                                                                    <input type="checkbox" class="form-check-input" name="registry" value="registry">Учетный</label>
+                                                                            </div>
+                                                                            <div class="form-check form-check-inline">
+                                                                                <label class="form-check-label">
+                                                                                    <input type="checkbox" class="form-check-input" name="all_trals" value="all_trals">Все остальные</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Общий вылов</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Конкретный вылов (в кг.):</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-group" id="ulov-once">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Вылов =</span></div>
+                                                                            <input type="text" name="ulov" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <p class="text-muted m-b-15 f-s-12">Диапазон общего вылова (в кг.):</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-daterange input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">Границы вылова</span>
+                                                                            </div>
+                                                                            <input type="text" name="start_all_ulov" class="form-control" placeholder="нач.">
+                                                                            <input type="text" name="end_all_ulov" class="form-control" placeholder="кон.">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Продолжительность лова</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Конкретная продолжительность (в час):</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-group" id="prod-once">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Прод-ть =</span></div>
+                                                                            <input type="text" name="prod" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <p class="text-muted m-b-15 f-s-12">Диапазон продолжительности лова (в час):</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-daterange input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">Границы прод-ти</span>
+                                                                            </div>
+                                                                            <input type="text" name="start_prod_lov" class="form-control" placeholder="нач.">
+                                                                            <input type="text" name="end_prod_lov" class="form-control" placeholder="кон.">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Промысловый квадрат</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Введите коды через запятую:</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="form-group">
+                                                                            <input type="text" name="prom_kv" class="form-control" placeholder="1221,1131,...">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Норвежская зона</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Введите коды через запятую:</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="form-group">
+                                                                            <input type="text" name="rnorv" class="form-control" placeholder="71,56,...">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Локальные районы</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Выберите локальный район (один или несколько)</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="form-group">
+                                                                            <select multiple class="form-control" id="loc" name="loc" size="7">
+                                                                                {% for item in loc_dist_list %}
+                                                                                <option value="{{item.lraj_k}}">{{item.lraj_k}} {{item.lraj_n}}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Экономические районы (408)</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Выберите 408 район (один или несколько)</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="form-group">
+                                                                            <select multiple class="form-control" id="eco" name="eco" size="7">
+                                                                                {% for item in eco_dict_list %}
+                                                                                <option value="{{item.zona_k}}">{{item.zona_k}} {{item.zona_n}}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Районы ИКЕС\НАФО (520)</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Выберите 520 район (один или несколько)</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="form-group">
+                                                                            <select multiple class="form-control" id="ikes" name="ikes" size="7">
+                                                                                {% for item in ikes_dict_list %}
+                                                                                <option value="{{item.ikes_k}}">{{item.ikes_k}} {{item.ikes_n}}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+                                                <!-- Карточка улова -->
+                                                <div class="tab-pane fade" id="ulov_card">
+                                                    <div class="row">
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Дополнительный код объекта лова</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Выберите доп. код объекта лова (один или несколько)</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="form-group">
+                                                                            <select multiple class="form-control" id="dopcode" name="dopcode" size="7">
+                                                                                {% for item in dop_code_dict_list %}
+                                                                                <option value="{{item.u_key}}">{{item.u_key}} {{item.key_full}}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                            <br>
+                                                                            <div class="form-check mb-3">
+                                                                                <label class="form-check-label">
+                                                                                    <input type="checkbox" class="form-check-input" name="no_dopcode" value="''">
+                                                                                    Без доп. кода объекта лова.
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Общий вылов по виду в трале</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Общий вес вылова (в кг.)</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">Вес >=</span>
+                                                                            </div>
+                                                                            <input type="text" name="u_wes" class="form-control" placeholder="">
+                                                                        </div>
+                                                                        <br>
+                                                                        <p class="text-muted m-b-15 f-s-12">Общий процент вылова (%)</p>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text">Процент >=</span>
+                                                                            </div>
+                                                                            <input type="text" name="u_prc" class="form-control" placeholder="">
+                                                                        </div>
+                                                                        <br>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <label class="form-check-label">
+                                                                                <input type="checkbox" class="form-check-input" value="filming">С сопутствующими объектами лова</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Шаг промера</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Введите шаг промера (в мм.)</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Шаг =</span></div>
+                                                                            <input type="text" name="step_promer" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <!-- Карточка полевого анализа (biopap) -->
+                                                <div class="tab-pane fade" id="biopap_card">
+                                                    <div class="row">
+
+                                                        <div class="col-lg-4">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Вид объекта лова</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Выберите вид объекта лова (один или несколько)</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="form-group">
+                                                                            <select multiple class="form-control" id="kod_fish" name="kod_fish" size="8">
+                                                                                {% for item in kod_fish_dict_list %}
+                                                                                <option value="{{item.kod_fish}}">{{item.kod_fish}} {{item.nam_fish}}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!--biopit-->
+                                                        <div class="col-lg-4">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Код объекта питания</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Выберите код объекта питания (один или несколько)</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="form-group">
+                                                                            <select multiple class="form-control" id="kodpit" name="kodpit" size="8">
+                                                                                {% for item in kodpit_dict_list %}
+                                                                                <option value="{{item.kod_pit}}">{{item.kod_pit}} {{item.nam_pit}}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Вид лова</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Выберите вид лова (один или несколько)</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="form-group">
+                                                                            <select multiple class="form-control" id="vidlov" name="vidlov" size="6">
+                                                                                {% for item in vidlov_dict_list %}
+                                                                                <option value="{{item.k_lov}}">{{item.k_lov}} {{item.n_lov}}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Орудие лова</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Выберите орудие лова (один или несколько)</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="form-group">
+                                                                            <select multiple class="form-control" id="orlov" name="orlov" size="6">
+                                                                                {% for item in orlov_dict_list %}
+                                                                                <option value="{{item.kod_orl}}">{{item.kod_orl}} {{item.vid_orl}}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Вид информации</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12"></p>
+                                                                    <div class="basic-form">
+                                                                        <div class="form-group">
+                                                                            <div class="form-check mb-3">
+                                                                                <label class="form-check-label">
+                                                                                    <input type="checkbox" class="form-check-input" value="vozr_proba">
+                                                                                    Возрастная проба
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check mb-3">
+                                                                                <label class="form-check-label">
+                                                                                    <input type="checkbox" class="form-check-input" value="pap">
+                                                                                    Полевой анализ(ПАП)
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check mb-3">
+                                                                                <label class="form-check-label">
+                                                                                    <input type="checkbox" class="form-check-input" value="skap">
+                                                                                    Сокр. кол. ан. питания(СКАП)
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check mb-3">
+                                                                                <label class="form-check-label">
+                                                                                    <input type="checkbox" class="form-check-input" value="kap_lab">
+                                                                                    Кол. ан. питания (КАП лабораторный)
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Выбор базы</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Выберите базу</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="form-group">
+                                                                            <div class="form-check-label">
+                                                                                <label class="form-check-label">
+                                                                                    <input type="checkbox" class="form-check-input" value="general">Основная</label>
+                                                                            </div>
+                                                                            <br>
+                                                                            <div class="form-check-label">
+                                                                                <label class="form-check-label">
+                                                                                    <input type="checkbox" class="form-check-input" value="norway">Норвежская</label>
+                                                                            </div>
+                                                                            <br>
+                                                                            <div class="form-check-label">
+                                                                                <label class="form-check-label">
+                                                                                    <input type="checkbox" class="form-check-input" value="yarus">Ярусная</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Номер пробы</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Введите номер пробы:</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-group" id="proba-once">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Проба =</span></div>
+                                                                            <input type="text" name="proba" class="form-control" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <p class="text-muted m-b-15 f-s-12">Диапазон проб:</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-daterange input-group" id="proba-range">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Границы знач.</span></div>
+                                                                            <input type="text" name="start_proba" class="form-control" placeholder="нач.">
+                                                                            <input type="text" name="end_proba" class="form-control" placeholder="кон.">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">По объекту лова в пробе</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Длина (большая, в мм.)</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="form-group">
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Границы длин</span></div>
+                                                                                <input type="text" size=4 maxlength=4 name="start_len" class="form-control" placeholder="нач.">
+                                                                                <input type="text" size=4 maxlength=4 name="end_len" class="form-control" placeholder="кон.">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <p class="text-muted m-b-15 f-s-12">Вес в пробе (в кг.)</p>
+                                                                        <div class="form-group">
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Вес >=</span>
+                                                                                </div>
+                                                                                <input type="text" name="weight" class="form-control" placeholder="Вес">
+                                                                            </div>                                                                            
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <p class="text-muted m-b-15 f-s-12">Пол</p>
+                                                                            <select multiple class="form-control" id="pol" name="pol" size="6">
+                                                                                {% for item in pol_list %}
+                                                                                <option value="{{item}}">{{item}}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <p class="text-muted m-b-15 f-s-12">Возраст 1</p>
+                                                                        <div class="form-group">
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Возраст 1 >=</span>
+                                                                                </div>
+                                                                                <input type="text" name="vozr1" class="form-control" placeholder="">
+                                                                            </div>
+                                                                            <br>
+                                                                            <p class="text-muted m-b-15 f-s-12">Возраст 2</p>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Возраст 2 =</span>
+                                                                                </div>
+                                                                                <input type="text" name="vozr2" class="form-control" placeholder="">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <p class="text-muted m-b-15 f-s-12">Стадия зрелости</p>
+                                                                        <div class="form-group">
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend"><span class="input-group-text">Стадия зрел. >=</span>
+                                                                                </div>
+                                                                                <input type="text" name="zrel" class="form-control" placeholder="">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Количество нерестовых колец</h4>
+                                                                    <p class="text-muted m-b-15 f-s-12">Диапазон нерестовых колец:</p>
+                                                                    <div class="basic-form">
+                                                                        <div class="input-daterange input-group">
+                                                                            <div class="input-group-prepend"><span class="input-group-text">Границы нерест. колец</span>
+                                                                            </div>
+                                                                            <input type="text" name="start_nring" class="form-control" placeholder="нач.">
+                                                                            <input type="text" name="end_nring" class="form-control" placeholder="кон.">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <!-- Доп. параметры -->
+                                                <div class="tab-pane fade" id="dop_params">
+                                                    <div class="row">
+                                                        {% block dop %}
+                                                        {{super()}}
+                                                        {% endblock dop %}
+                                                    </div>
+                                                </div>
+
+                                                <!-- Конец -->
+                                                <div class="tab-pane fade" id="end_form">
+                                                    <div class="row">
+                                                        <div class="row h-100">
+                                                            <div class="col-12 h-100 d-flex flex-column justify-content-center align-items-center">
+                                                                <p> <input class="button-74" type="submit" value="Отправить" /> </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

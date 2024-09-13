@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/card.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/button.css')}}">
+
+    <link href="{{url_for('static', filename='plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='plugins/clockpicker/dist/jquery-clockpicker.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='plugins/jquery-asColorPicker-master/css/asColorPicker.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='plugins/bootstrap-datepicker/bootstrap-datepicker.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='plugins/timepicker/bootstrap-timepicker.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='plugins/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='plugins/tables/css/datatable/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='plugins/jquery-steps/css/jquery.steps.css')}}" rel="stylesheet">
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    {% if title %}
+      <title>Bio App - {{ title }}</title>
+    {% else %}
+      <title>Bio App</title>
+    {% endif %}
+    {% endblock %}
+
+</head>
+<body>
+ {% block content %}
+<!--TODO: sidebar-->
+ <div id="main-wrapper">
+
+     <div class="nav-header">
+         <div class="brand-logo">
+             <a href="{{url_for('index')}}">
+                 <b class="logo-abbr"><img src="{{url_for('static', filename='images/pinro_logo.png')}}" alt=""> </b>
+                 <span class="logo-compact"><img src="{{url_for('static', filename='images/logo-compact.png')}}" alt=""></span>
+                 <span class="brand-title">
+                     <img src="{{url_for('static', filename='images/logo-text.png')}}" alt="">
+                 </span>
+             </a>
+         </div>
+     </div>
+
+     <div class="header">
+         <div class="header-content clearfix">
+             <div class="nav-control">
+                 <div class="hamburger">
+                     <span class="toggle-icon"><i class="icon-menu"></i></span>
+                 </div>
+             </div>
+             <div class="header-left">
+                 <div class="input-group icons">
+                     <div class="input-group-prepend">
+<!--                         <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>-->
+                     </div>
+<!--                     <input type="search" class="form-control" placeholder="" aria-label="Search Dashboard">-->
+                     <div class="drop-down   d-md-none">
+                         <form action="#">
+<!--                             <input type="text" class="form-control" placeholder="Search">-->
+                         </form>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+     <div class="nk-sidebar">
+         <div class="nk-nav-scroll">
+             <ul class="metismenu" id="menu">
+                 <li class="nav-label">Сайт</li>
+                 <li>
+                     <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                         <i class="icon-screen-desktop menu-icon"></i><span class="nav-text">Страницы</span>
+                     </a>
+                     <ul aria-expanded="false">
+                         <li><a href="{{url_for('index')}}">Главная</a></li>
+                         <li><a href="{{url_for('forms')}}">Формы</a></li>
+                     </ul>
+                 </li>
+             </ul>
+         </div>
+     </div>
+{% endblock content %}
+</div>
+
+{% block footer %}
+<div class="footer">
+    <div class="copyright">
+        <p>PINRO &copy; Designed & Developed by <a href="">Leeralim</a> 2024</p>
+    </div>
+</div>
+{% endblock footer %}
+
+ <script>
+          let arrow = document.querySelectorAll(".arrow");
+          for (var i = 0; i < arrow.length; i++) {
+            arrow[i].addEventListener("click", (e)=>{
+           let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+           arrowParent.classList.toggle("showMenu");
+            });
+          }
+          let sidebar = document.querySelector(".sidebar");
+          let sidebarBtn = document.querySelector(".bx-menu");
+          console.log(sidebarBtn);
+          sidebarBtn.addEventListener("click", ()=>{
+            sidebar.classList.toggle("close");
+          });
+</script>
+
+<script src="{{url_for('static', filename='plugins/common/common.min.js') }}"></script>
+<script src="{{url_for('static', filename='js/custom.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/settings.js') }}"></script>
+<script src="{{url_for('static', filename='js/gleek.js')}}"></script>
+<script src="{{url_for('static', filename='js/styleSwitcher.js')}}"></script>
+
+<script src="{{url_for('static', filename='plugins/jquery-steps/build/jquery.steps.min.js')}}"></script>
+<script src="{{url_for('static', filename='plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/plugins-init/jquery-steps-init.js')}}"></script>
+
+<script src="{{url_for('static', filename='plugins/tables/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{url_for('static', filename='plugins/tables/js/datatable/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{url_for('static', filename='plugins/tables/js/datatable-init/datatable-basic.min.js')}}"></script>
+
+<script src="{{url_for('static', filename='plugins/tables/js/datatable/dataTables.buttons.min.js')}}"></script>
+<script src="{{url_for('static', filename='plugins/tables/js/buttons.flash.min.js')}}"></script>
+<script src="{{url_for('static', filename='plugins/tables/js/jszip.min.js')}}"></script>
+<script src="{{url_for('static', filename='plugins/tables/js/pdfmake.min.js')}}"></script>
+<script src="{{url_for('static', filename='plugins/tables/js/vfs_fonts.js')}}"></script>
+<script src="{{url_for('static', filename='plugins/tables/js/buttons.html5.min.js')}}"></script>
+<script src="{{url_for('static', filename='plugins/tables/js/buttons.print.min.js')}}"></script>
+<script src="{{url_for('static', filename='plugins/tables/js/datatables-init.js')}}"></script>
+<script src="{{url_for('static', filename='plugins/tables/js/datatables.js')}}"></script>
+
+</body>
+
+</html>

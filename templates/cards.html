@@ -1,0 +1,92 @@
+{% extends 'base_bio.html' %}
+
+{% block content %}
+{{ super() }}
+
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <h2 class="d-inline">Выбранные параметры:</h2>
+
+                <div class="col-12">
+                    <br>
+                    <hr>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row justify-content-between">
+                        <div class="col-lg-3">
+                            <h4 class="card-title">Траловая карточка</h4>
+                            <ul class="list-icons">
+                                {% for key, value in tral_params.items() %}
+                                    {% if value is not none %}
+                                        <li><i class="fa fa-check text-info"></i>{{ key }} = {{ value }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="col-lg-3">
+                            <h4 class="card-title">Карточка улова</h4>
+                            <ul class="list-icons">
+                                {% for key, value in ulov_params.items() %}
+                                    {% if value is not none %}
+                                        <li><i class="fa fa-check text-info"></i>{{ key }} = {{ value }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="col-lg-3">
+                            <h4 class="card-title">Карточка био. анализа</h4>
+                            <ul class="list-icons">
+                                {% for key, value in biopap_params.items() %}
+                                    {% if value is not none %}
+                                        <li><i class="fa fa-check text-info"></i>{{ key }} = {{ value }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="col-lg-3">
+                            <h4 class="card-title">Выбранные рыбки</h4>
+                            <ul class="list-icons">
+                                {% for key, value in fish_params.items() %}
+                                    {% if value is not none %}
+                                        <li><i class="fa fa-check text-info"></i>{{ key }} = {{ value }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <hr>
+                </div>
+
+                <div class="row">
+                    <div class="ag-courses_box">
+                        {% for item in forms_list %}
+                        <div class="ag-courses_item">
+                            <a href="{{url_for('open_form', alias=alias, curr_form=item.url, biopap_view_qur=biopap_view_qur, tral_view_qur=tral_view_qur)}}" class="ag-courses-item_link">
+                                <div class="ag-courses-item_bg"></div>
+                                <div class="ag-courses-item_title">
+                                    {{item.title}}
+                                </div>
+                                <div class="ag-courses-item_date-box">
+                                    {{item.title_text}}
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
