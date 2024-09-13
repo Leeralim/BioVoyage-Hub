@@ -9,9 +9,6 @@ import warnings
 
 
 app = Flask(__name__)
-app.config.from_object(__name__)
-app.config['SECRET_KEY'] = 'dc8dbf38f2fd1bdac02aa7d9fea914af863eb1a2'
-
 
 warnings.resetwarnings()
 warnings.simplefilter('ignore', pd.errors.SettingWithCopyWarning)
